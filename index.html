@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Multi Search</title>
-    <style type="text/css">
-        code{background:#F8F8F8; border:black dashed 1px; padding:6px}​
-    </style>
-</head>
-<body>
-    Example usage:
-    <br><br>
-    <code>
-        https://domain.com?search=cat&amp;site=https://www.startpage.com/rvd/search?query=%s&amp;site=https://duckduckgo.com/?q=%s
-    </code>
-<script type="text/javascript">
-    window.onload = function(e) {
-        const urlParams = new URLSearchParams(window.location.search);
-
-        if (!urlParams.has('search') || !urlParams.has('site')) return;
-
-        const searchTerm = urlParams.get('search');
-        const searchSites = urlParams.getAll('site');
-
-        searchSites.forEach(site => window.open(site.replace('%s', searchTerm)));
-    }
-</script>
-</body>
+  <head>
+    <link href="search_bar.css" rel="stylesheet" type="text/css" media="all">
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="search.js" type="text/javascript"></script>
+  </head>
+  <body>
+  <!-- Search icon by iconic icon pack (http://somerandomdude.com/work/iconic/) -->
+  <input class="search" type="text" value="Search..."><img id="mglass" src="search.png">
+  </body>
 </html>
