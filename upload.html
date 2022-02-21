@@ -83,23 +83,11 @@
     </head>
 <body>
     <div class="container">
-        <br>
-        <h4 style="text-align:center;font-size:20px;">Telegraph Image Hosting</h4>
-        <h4 style="text-align:center;font-size:10px;color:red;">Free & Unlimited Image Hosting</h4>
-        <h4 style="text-align:center;font-size:10px;color:#A569BD;">Start Uploading Your Image Now</h4>
-        <br>
-        <form role="form" action="https://telegra.ph/upload" onsubmit="return false" method="post" enctype="multipart/form-data" id="uploadForm">
-        <div class="upload-file">
-        <input type="file" class="input-file" name="file" accept="image/png, image/jpeg, image/jpg, image/gif">
-        <span class="tip">Choose Image</span>
-        </div>
-        <br><div class="Result"></div>
-        <textarea id="input"></textarea>
-        <button type="submit" name="submit" class="btn btn-primary btn-block" style="background: #4066ff;border:none;" onclick="submitdata()">Upload</button>
-        </form><br>
-        <p align="center">Thanks to <a href="https://telegra.ph" target="_Blank">Telegraph</a> & <a href="https://cloudflare.com" target="_Blank">Cloudflare</a></p>
-        <p align="center">2021 / Author: <a href="https://t.me/missuo" target="_Blank">Vincent</a> / Beta Version</p>
-        
+	<form method="post" action="https://telegra.ph/upload" enctype="multipart/form-data" target="_blank">
+        <label for="select-file">Select Image(<5M):</label>
+        <input id="select-file" name="file0" type="file">
+        <input value="click to upload" type="submit">
+        </form>    
     </div>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
