@@ -83,11 +83,20 @@
     </head>
 <body>
     <div class="container">
-	<form method="post" action="https://telegra.ph/upload" enctype="multipart/form-data" target="_blank">
-        <label for="select-file">Select Image(<5M):</label>
-        <input id="select-file" name="file0" type="file">
-        <input value="click to upload" type="submit">
-        </form>    
+	<br>
+        <h4 style="text-align:center;font-size:20px;">Telegraph Image Hosting</h4>
+        <h4 style="text-align:center;font-size:10px;color:red;">Free & Unlimited Image Hosting</h4>
+        <h4 style="text-align:center;font-size:10px;color:#A569BD;">Start Uploading Your Image Now</h4>
+        <br>
+        <form method="post" action="https://telegra.ph/upload" enctype="multipart/form-data" target="_blank">
+        <label for="upload-file">Choose Image</label>
+        <input id="upload-file" name="file0" type="file">
+        </div>
+        <br><div class="Result"></div>
+        <textarea id="input"></textarea>
+        <button type="submit" name="submit" class="btn btn-primary btn-block" style="background: #4066ff;border:none;" onclick="submitdata()">Upload</button>
+        </form>
+	<br>    
     </div>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
