@@ -87,15 +87,16 @@
         <h4 style="text-align:center;font-size:20px;">Telegraph Image Hosting</h4>
         <h4 style="text-align:center;font-size:10px;color:red;">Free & Unlimited Image Hosting</h4>
         <h4 style="text-align:center;font-size:10px;color:#A569BD;">Start Uploading Your Image Now</h4>
-        <br>
-        <form method="post" action="https://telegra.ph/upload" enctype="multipart/form-data" target="_blank">
-        <label for="upload-file">Choose Image</label>
-        <input id="upload-file" name="file0" type="file">
+        <br>	
+	<form role="form" action="https://telegra.ph/upload" onsubmit="return false" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="upload-file">
+        <input type="file" class="input-file" name="file0" accept="image/png, image/jpeg, image/jpg, image/gif">
+        <span class="tip">Choose Image</span>
         </div>
         <br><div class="Result"></div>
         <textarea id="input"></textarea>
         <button type="submit" name="submit" class="btn btn-primary btn-block" style="background: #4066ff;border:none;" onclick="submitdata()">Upload</button>
-        </form>
+        </form>	
 	<br>    
     </div>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
