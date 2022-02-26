@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="tsrc.css" />
+    <title>Unofficial Torrent API</title>
+  </head>
+  <body>
+    <h1 class="huehue">
+       <span>T-API</span> 
+    </h1>
+    <div class="container">
+      <form onsubmit="return false">
+        <select
+          id="torrents"
+          oninvalid="this.setCustomValidity('Please Select a site First')"
+          required
+        >
+          <!-- <option value="" class="drop">Please select</option> -->
+          <option class="drop-down" value="piratebay">PirateBay</option>
+          <option class="drop-down" value="1337x">1337X</option>
+          <option class="drop-down" value="yts">YTS</option>
+          <option class="drop-down" value="galaxy">TorrentGalaxy</option>
+          <option class="drop-down" value="limetorrent">LimeTorrent</option>
+          <option class="drop-down" value="kickass">KickAss</option>
+          <option class="drop-down" value="rarbg">Rarbg</option>
+          <option class="drop-down" value="zooqle">Zooqle</option>
+          <option class="drop-down" value="glodls">GloDLs</option>
+          <option class="drop-down" value="magnetdl">MagnetDL</option>
+          <option class="drop-down" value="torrentfunk">TorrentFunk</option>
+          <option class="drop-down" value="torrentproject">TorrentProject</option>
+          <option class="drop-down" value="torrentz">TorrentZ</option>
+          <option class="drop-down" value="torlock">TorLock</option>
+          <option class="drop-down" value="eztv">EzTV</option>
+          <option class="drop-down" value="nyaasi">Nyaasi</option>
+        </select>
+        <input type="text" placeholder="Search here" id="query" required />
+
+        <!-- <input id="btn-submit" type="submit" onsubmit="get_torrent()"/> -->
+        <button id="btn-submit" onclick="get_torrent()">Search</button>
+      </form>
+
+      <div id="data">
+
+      </div>
+    </div>
+
+    <!-- <footer id="foot">@ Made By Ryuk</footer> -->
+    <script src="tsrc.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
+</html>
