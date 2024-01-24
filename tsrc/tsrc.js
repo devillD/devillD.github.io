@@ -8,7 +8,7 @@ async function get_torrent() {
 
   const query = document.getElementById("query").value;
   if(query !== ''){
-    const api = "https://api-zero.onrender.com/" +siteName +"/" +query;
+    const api = "https://api.api-zero.workers.dev/" +siteName +"/" +query;
     
     const html = await axios.get(api);
     const torrents = await html.data;
@@ -82,5 +82,4 @@ async function get_torrent() {
   }
       
   }
-  
 }
