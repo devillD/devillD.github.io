@@ -1,85 +1,65 @@
 async function get_torrent() {
-
-  let siteName = document.getElementById("torrents").value;
-
-  if(siteName === ''){
-    siteName = '1337x';
-  }
-
-  const query = document.getElementById("query").value;
-  if(query !== ''){
-    const api = "https://api.api-zero.workers.dev/" +siteName +"/" +query;
-    
-    const html = await axios.get(api);
-    const torrents = await html.data;
-    console.log(torrents);
-  
-    console.log(Object.keys(torrents).length);
-    var div = document.getElementById("data");
-    div.innerHTML = "";
-  
-    if(Object.keys(torrents).length === 1){
-        let error = document.createElement('p');
-        error.textContent = "No result found";
-        div.appendChild(error);
+    let siteName = document.getElementById("torrents").value;
+    if (siteName === '') {
+        siteName = '1337x';
     }
-    else{
-  
-    for (i = 0; i < Object.keys(torrents).length; i++) {
-      let magnet = document.createElement("a");
-      let name = document.createElement("p");
-      let size = document.createElement("span");
-      let category = document.createElement("span");
-      let type = document.createElement("span");
-      let lang = document.createElement("span");
-      let dateUpload = document.createElement("span");
-      let seed = document.createElement("span");
-      let leech = document.createElement("span");
-      let lastChecked = document.createElement("span");
-      let downloads = document.createElement("span");
-  
-      magnet.setAttribute("href", torrents[i]["Magnet"]);
-      magnet.setAttribute("target", "_blank");
-  
-      magnet.className = "magnet";
-      name.className = "name";
-      size.className = "size";
-      category.className = "category";
-      type.className = "type";
-      lang.className = "lang";
-      dateUpload.className = "date";
-      seed.className = "seed";
-      leech.className = "leech";
-      lastChecked.className = "lastchecked";
-      downloads.className = "downloads";
-  
-      name.textContent = torrents[i]["Name"] || '';
-      size.textContent = torrents[i]["Size"] || '';
-      magnet.textContent = "Magnet" || '';
-      category.textContent = torrents[i]["Category"] || '';
-      type.textContent = torrents[i]["Type"] || '';
-      lang.textContent = torrents[i]["Language"] || '';
-      dateUpload.textContent = torrents[i]["DateUpload"] || torrents[i]["Date"] || '';
-      seed.textContent = torrents[i]["Seeders"] || torrents[i]["Seeder"] || '';
-      leech.textContent = torrents[i]["Leechers"] || torrents[i]["Leecher"] || '';
-      lastChecked.textContent = torrents[i]["LastChecked"] || '';
-      downloads.textContent = torrents[i]["Downloads"] || '';
-  
-      name.appendChild(magnet);
-      name.appendChild(size);
-      name.appendChild(category);
-      name.appendChild(type);
-      name.appendChild(lang);
-      name.appendChild(dateUpload);
-      name.appendChild(seed);
-      name.appendChild(leech);
-      name.appendChild(lastChecked);
-      name.appendChild(downloads);
-  
-      div.appendChild(name);
+    const query = document.getElementById("query").value;
+    if (query !== '') {
+        const api = "https://api.api-zero.workers.dev/" + siteName + "/" + query;
+        try {
+            const response = await axios.get(api);
+            const torrents = response.data;
+            const div = document.getElementById("data");
+            div.innerHTML = "";
+            if (Object.keys(torrents).length === 0) {
+                let error = document.createElement('p');
+                error.textContent = "No results found.";
+                div.appendChild(error);
+            } else {
+                for (let i = 0; i < Object.keys(torrents).length; i++) {
+                    const torrent = torrents[i];
+                    let magnet = document.createElement("a");
+                    let name = document.createElement("p");
+                    let size = document.createElement("span");
+                    let category = document.createElement("span");
+                    let type = document.createElement("span");
+                    let lang = document.createElement("span");
+                    let dateUpload = document.createElement("span");
+                    let seed = document.createElement("span");
+                    let leech = document.createElement("span");
+                    let lastChecked = document.createElement("span");
+                    let downloads = document.createElement("span");
+
+                    magnet.setAttribute("href", torrent["Magnet"]);
+                    magnet.setAttribute("target", "_blank");
+                    magnet.textContent = "Magnet";
+
+                    name.textContent = torrent["Name"] || '';
+                    size.textContent = "Size: " + (torrent["Size"] || '');
+                    category.textContent = "Category: " + (torrent["Category"] || '');
+                    type.textContent = "Type: " + (torrent["Type"] || '');
+                    lang.textContent = "Language: " + (torrent["Language"] || '');
+                    dateUpload.textContent = "Date Upload: " + (torrent["DateUpload"] || torrent["Date"] || '');
+                    seed.textContent = "Seeders: " + (torrent["Seeders"] || torrent["Seeder"] || '');
+                    leech.textContent = "Leechers: " + (torrent["Leechers"] || torrent["Leecher"] || '');
+                    lastChecked.textContent = "Last Checked: " + (torrent["LastChecked"] || '');
+                    downloads.textContent = "Downloads: " + (torrent["Downloads"] || '');
+
+                    name.appendChild(magnet);
+                    div.appendChild(name);
+                    div.appendChild(size);
+                    div.appendChild(category);
+                    div.appendChild(type);
+                    div.appendChild(lang);
+                    div.appendChild(dateUpload);
+                    div.appendChild(seed);
+                    div.appendChild(leech);
+                    div.appendChild(lastChecked);
+                    div.appendChild(downloads);
+                }
+            }
+        } catch (error) {
+            console.error("Error fetching torrents:", error);
+        }
     }
-    // document.getElementById('foot').style.visibility = "visible";
-  }
-      
-  }
 }
