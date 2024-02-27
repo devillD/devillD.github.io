@@ -8,40 +8,34 @@
 </head>
 <body>
     <header>
-        <h1 class="title">Torrent Search</h1>
+        <h1 class="title">T-API</h1>
     </header>
     <div class="container">
-        <form onsubmit="return false">
-            <div class="input-group">
-                <select id="torrents" required>
-                    <option value="" disabled selected>Select a site</option>
-                    <option value="piratebay">PirateBay</option>
-                    <option value="1337x">1337X</option>
-                    <option value="yts">YTS</option>
-                    <option value="galaxy">TorrentGalaxy</option>
-                    <option value="limetorrent">LimeTorrent</option>
-                    <option value="kickass">KickAss</option>
-                    <option value="rarbg">Rarbg</option>
-                    <option value="zooqle">Zooqle</option>
-                    <option value="glodls">GloDLs</option>
-                    <option value="magnetdl">MagnetDL</option>
-                    <option value="torrentfunk">TorrentFunk</option>
-                    <option value="torrentproject">TorrentProject</option>
-                    <option value="torrentz">TorrentZ</option>
-                    <option value="torlock">TorLock</option>
-                    <option value="eztv">EzTV</option>
-                    <option value="nyaasi">Nyaasi</option>
-                </select>
-                <input type="text" placeholder="Enter search query" id="query" required>
-                <button id="btn-submit" onclick="get_torrent()">Search</button>
-            </div>
-        </form>
+        <div class="input-group">
+            <select id="torrents" required>
+                <option value="piratebay">PirateBay</option>
+                <option value="1337x">1337X</option>
+                <option value="yts">YTS</option>
+                <option value="galaxy">TorrentGalaxy</option>
+                <option value="limetorrent">LimeTorrent</option>
+                <option value="kickass">KickAss</option>
+                <option value="rarbg">Rarbg</option>
+                <option value="zooqle">Zooqle</option>
+                <option value="glodls">GloDLs</option>
+                <option value="magnetdl">MagnetDL</option>
+                <option value="torrentfunk">TorrentFunk</option>
+                <option value="torrentproject">TorrentProject</option>
+                <option value="torrentz">TorrentZ</option>
+                <option value="torlock">TorLock</option>
+                <option value="eztv">EzTV</option>
+                <option value="nyaasi">Nyaasi</option>
+                <!-- Add more options as needed -->
+            </select>
+            <input type="text" placeholder="Search here" id="query" required>
+            <button id="btn-submit" onclick="getTorrent()">Search</button>
+        </div>
         <div id="data" class="results"></div>
     </div>
-    <footer>
-        <p>&copy; 2024 Torrent Search. All rights reserved.</p>
-    </footer>
     <script src="tsrc.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
