@@ -16,47 +16,40 @@ async function get_torrent() {
                 error.textContent = "No results found.";
                 div.appendChild(error);
             } else {
-                for (let i = 0; i < Object.keys(torrents).length; i++) {
-                    const torrent = torrents[i];
-                    let magnet = document.createElement("a");
-                    let name = document.createElement("p");
-                    let size = document.createElement("span");
-                    let category = document.createElement("span");
-                    let type = document.createElement("span");
-                    let lang = document.createElement("span");
-                    let dateUpload = document.createElement("span");
-                    let seed = document.createElement("span");
-                    let leech = document.createElement("span");
-                    let lastChecked = document.createElement("span");
-                    let downloads = document.createElement("span");
+                torrents.forEach(torrent => {
+                    const torrentItem = document.createElement('div');
+                    torrentItem.classList.add('torrent-item');
 
-                    magnet.setAttribute("href", torrent["Magnet"]);
-                    magnet.setAttribute("target", "_blank");
-                    magnet.textContent = "Magnet";
+                    const torrentLink = document.createElement('a');
+                    torrentLink.classList.add('torrent-link');
+                    torrentLink.href = torrent['Magnet'];
+                    torrentLink.textContent = torrent['Name'] || 'Unknown';
 
-                    name.textContent = torrent["Name"] || '';
-                    size.textContent = "Size: " + (torrent["Size"] || '');
-                    category.textContent = "Category: " + (torrent["Category"] || '');
-                    type.textContent = "Type: " + (torrent["Type"] || '');
-                    lang.textContent = "Language: " + (torrent["Language"] || '');
-                    dateUpload.textContent = "Date Upload: " + (torrent["DateUpload"] || torrent["Date"] || '');
-                    seed.textContent = "Seeders: " + (torrent["Seeders"] || torrent["Seeder"] || '');
-                    leech.textContent = "Leechers: " + (torrent["Leechers"] || torrent["Leecher"] || '');
-                    lastChecked.textContent = "Last Checked: " + (torrent["LastChecked"] || '');
-                    downloads.textContent = "Downloads: " + (torrent["Downloads"] || '');
+                    const torrentInfo = document.createElement('div');
+                    torrentInfo.classList.add('torrent-info');
 
-                    name.appendChild(magnet);
-                    div.appendChild(name);
-                    div.appendChild(size);
-                    div.appendChild(category);
-                    div.appendChild(type);
-                    div.appendChild(lang);
-                    div.appendChild(dateUpload);
-                    div.appendChild(seed);
-                    div.appendChild(leech);
-                    div.appendChild(lastChecked);
-                    div.appendChild(downloads);
-                }
+                    const sizeSpan = document.createElement('span');
+                    sizeSpan.textContent = 'Size: ' + (torrent['Size'] || 'Unknown');
+
+                    const categorySpan = document.createElement('span');
+                    categorySpan.textContent = 'Category: ' + (torrent['Category'] || 'Unknown');
+
+                    const seedSpan = document.createElement('span');
+                    seedSpan.textContent = 'Seeders: ' + (torrent['Seeders'] || torrent['Seeder'] || 'Unknown');
+
+                    const leechSpan = document.createElement('span');
+                    leechSpan.textContent = 'Leechers: ' + (torrent['Leechers'] || torrent['Leecher'] || 'Unknown');
+
+                    torrentInfo.appendChild(sizeSpan);
+                    torrentInfo.appendChild(categorySpan);
+                    torrentInfo.appendChild(seedSpan);
+                    torrentInfo.appendChild(leechSpan);
+
+                    torrentItem.appendChild(torrentLink);
+                    torrentItem.appendChild(torrentInfo);
+
+                    div.appendChild(torrentItem);
+                });
             }
         } catch (error) {
             console.error("Error fetching torrents:", error);
