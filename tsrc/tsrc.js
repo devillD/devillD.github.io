@@ -7,7 +7,7 @@ async function getTorrent() {
 
     const query = document.getElementById("query").value;
     if (query !== '') {
-        const api = "https://api.api-zero.workers.dev/" + siteName + "/" + query;
+        const api = "https://api-devilld.koyeb.app/" + siteName + "/" + query;
 
         try {
             const response = await fetch(api);
