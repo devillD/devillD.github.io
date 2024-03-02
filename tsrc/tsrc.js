@@ -7,7 +7,7 @@ async function getTorrent() {
 
     const query = document.getElementById("query").value;
     if (query !== '') {
-        const api = "https://api-evoo.koyeb.app/" + siteName + "/" + query;
+        const api = "https://asown.cyclic.app/" + siteName + "/" + query;
 
         try {
             const response = await fetch(api);
