@@ -7,7 +7,7 @@ async function getTorrent() {
 
     const query = document.getElementById("query").value;
     if (query !== '') {
-        const api = "https://asown.cyclic.app/" + siteName + "/" + query;
+        const api = "https://ultimate.cyclic.app/" + siteName + "/" + query;
 
         // Define the custom user agent
         try {
