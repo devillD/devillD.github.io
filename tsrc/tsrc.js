@@ -10,15 +10,10 @@ async function getTorrent() {
         const api = "https://asown.cyclic.app/" + siteName + "/" + query;
 
         // Define the custom user agent
-        const userAgent = 'Github.com/DevillD';
-
         try {
-            const response = await axios.get(api, {
-                headers: {
-                    'User-Agent': userAgent
-                }
-            });
-            displayTorrents(response.data);
+            const response = await fetch(api);
+            const data = await response.json();
+            displayTorrents(data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
