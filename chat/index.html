@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/abir614/lib/arown.css"> <!-- Link to your CSS file -->
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script> <!-- Socket.io client -->
+    <script src="https://cdn.jsdelivr.net/gh/abir614/lib/crypto-js.min.js"></script> <!-- Include CryptoJS -->
+</head>
+<body>
+
+    <!-- Login Form -->
+    <div id="login-form" aria-labelledby="login-title">
+        <h2 id="login-title">Join Chat</h2>
+        <input type="text" id="username" placeholder="Enter your username" 
+               pattern="[A-Za-z0-9]{4,20}" required title="4-20 characters (letters and numbers only)" aria-label="Username" />
+        <input type="text" id="roomId" placeholder="Enter room ID" 
+               pattern="\d{1,5}" required title="1-5 digit number only" aria-label="Room ID" />
+	    <button id="join" aria-label="Join chat">Join</button>
+    </div>
+
+    <!-- Chat Container -->
+    <div id="chat-container" style="display: none;" aria-labelledby="chat-title">
+        <div id="active-users" aria-label="Active users"></div>
+        <div id="messages" aria-live="polite"></div>
+        <div id="input-area">
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;" aria-label="Upload image"> <!-- Hidden file input -->
+            <label id="imageUploadLabel" for="imageUpload" title="">📷</label> <!-- Label for file upload -->
+            <input type="text" id="message" placeholder="Type a message..." aria-label="Message input" />
+            <button id="send" aria-label="Send message">Send</button>
+        </div>
+        <div id="typing-indicator" aria-live="polite"></div>
+    </div>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
